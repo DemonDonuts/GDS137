@@ -1,4 +1,4 @@
-function Player()
+function player()
 {
     // set up player starting point
     this.x = canvas.width/2;
@@ -6,16 +6,16 @@ function Player()
 
     // player dimension
     this.width = 100;
-    this.heiht = 100;
+    this.height = 100;
 
-    this.color = "#8800ffff";
+    this.color = "#ff0000";
 
     this.draw = function()
     {
         context.save();
             context.fillStyle = this.color;
             context.translate(this.x,this.y);
-            context.fillRect(-this.width/2),(-this.width/2), (this.width, this.height);
+            context.fillRect( (-this.width/2),(-this.height/2),this.width,this.height);
         context.restore();
     }
 
