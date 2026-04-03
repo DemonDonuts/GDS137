@@ -8,7 +8,11 @@ function player()
     this.width = 100;
     this.height = 100;
 
-    this.color = "#ff0000";
+    this.color = "#5500ffff";
+
+    //velocity
+    this.vx = 0;
+    this.vy = 0;
 
     this.draw = function()
     {
@@ -17,6 +21,12 @@ function player()
             context.translate(this.x,this.y);
             context.fillRect( (-this.width/2),(-this.height/2),this.width,this.height);
         context.restore();
+    }
+
+    this.move = function()
+    {
+        this.x += this.vx;
+        this.y += this.vy;
     }
 
 }
