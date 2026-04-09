@@ -9,8 +9,8 @@ context = canvas.getContext("2d");
 
 player = new player();
 player.vx = 8;
-player.vy = 0;
-player.x = 5;
+player.vy = 12;
+//player.x = 100;
 //player.y = 100;
 
 timer = setInterval(animate, interval);
@@ -28,3 +28,4 @@ function animate()
 
     player.draw();
 }
+

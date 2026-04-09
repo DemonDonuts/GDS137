@@ -7,9 +7,8 @@ function player()
     // player dimension
     this.width = 100;
     this.height = 100;
-
-    this.color = "#5500ffff";
-
+    this.radius = 50;
+    
     //velocity
     this.vx = 0;
     this.vy = 0;
@@ -17,9 +16,11 @@ function player()
     this.draw = function()
     {
         context.save();
+            context.beginPath();
+            context.arc(this.x, this.y, this.radius, 0, 360*Math.PI/180, true);
             context.fillStyle = this.color;
-            context.translate(this.x,this.y);
-            context.fillRect( (-this.width/2),(-this.height/2),this.width,this.height);
+            context.fill();
+            context.closePath();
         context.restore();
     }
 
@@ -27,6 +28,38 @@ function player()
     {
         this.x += this.vx;
         this.y += this.vy;
-    }
 
+        // left
+        if (this.x - this.radius < 0)
+        {
+            this.x = this.radius;
+            this.vx = -this.vx;
+            this.color = "lightgreen";
+        }
+
+        // right
+        if (this.x + this.radius > canvas.width)
+        {
+            this.x = canvas.width - this.radius;
+            this.vx = -this.vx;
+            this.color = "lavender";
+        }
+
+        // up
+        if (this.y - this.radius < 0)
+        {
+            this.y = this.radius;
+            this.vy = -this.vy;
+            this.color = "yellow";
+        }
+
+        // down
+        if (this.y + this.radius > canvas.height)
+        {
+            this.y = canvas.height - this.radius;
+            this.vy = -this.vy;
+            this.color = "pink";
+        }
+    }
 }
+
