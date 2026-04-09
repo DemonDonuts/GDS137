@@ -8,8 +8,23 @@ canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
 player = new GameObject();
-player.vx = 8;
-player.vy = 12;
+npc1 = new GameObject();
+npc2 = new GameObject();
+npc3 = new GameObject();
+
+player.color = "blue";
+npc1.color = "lightgreen";
+npc2.color = "yellow";
+npc3.color = "lavender"; 
+
+player.x = 200; player.y = 400;
+npc1.x = 400; npc1.y = 400;
+npc2.x = 600; npc2.y = 400;
+npc3.x = 800; npc3.y = 400;
+
+
+player.vx = 0;
+player.vy = 0;
 //player.x = 100;
 //player.y = 100;
 
@@ -20,12 +35,26 @@ function animate()
     //clear canvas
     context.clearRect(0,0, canvas.width, canvas.height);
 
+    if (d)
+    {
+        player.x += 4
+    }
+
+    if (a)
+    {
+        player.x -= 4
+    }
+
+
     player.move();
     if (player.x > canvas.width + player.width/2)
     {
         player.x = -player.width/2
     }
 
-    player.draw();
+    player.drawRect();
+    npc1.drawCircle();
+    npc2.drawCircle();
+    npc3.drawRect();
 }
 

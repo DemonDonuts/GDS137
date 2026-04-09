@@ -8,12 +8,15 @@ function GameObject()
     this.width = 100;
     this.height = 100;
     this.radius = 50;
+
+    this.color = "blue";
     
     //velocity
     this.vx = 0;
     this.vy = 0;
 
-    this.draw = function()
+//cirlce
+    this.drawCircle = function()
     {
         context.save();
             context.beginPath();
@@ -23,6 +26,29 @@ function GameObject()
             context.closePath();
         context.restore();
     }
+
+//rectangle
+    this.drawRect = function()
+    {
+        context.save();
+            context.fillStyle = "blue";
+            context.fillRect(this.x - this.width/2, this.y - this.height/2, this.width, this.height);
+        context.restore();
+    }
+
+
+
+
+//     this.draw = function()
+//     {
+//         context.save();
+//             context.beginPath();
+//             context.arc(this.x, this.y, this.radius, 0, 360*Math.PI/180, true);
+//             context.fillStyle = this.color;
+//             context.fill();
+//             context.closePath();
+//         context.restore();
+//     }
 
     this.move = function()
     {
