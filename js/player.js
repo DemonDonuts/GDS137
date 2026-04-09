@@ -62,5 +62,3 @@ function player()
         }
     }
 }
-
-///wfergweqf
