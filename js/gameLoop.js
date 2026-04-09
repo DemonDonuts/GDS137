@@ -7,7 +7,7 @@ var interval = 1000/60;
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
-player = new player();
+player = new GameObject();
 player.vx = 8;
 player.vy = 12;
 //player.x = 100;

@@ -1,4 +1,4 @@
-function player()
+function GameObject()
 {
     // set up player starting point
     this.x = canvas.width/2;
