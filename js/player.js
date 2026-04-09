@@ -37,8 +37,6 @@ function GameObject()
     }
 
 
-
-
 //     this.draw = function()
 //     {
 //         context.save();
