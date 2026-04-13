@@ -52,6 +52,40 @@ function animate()
         player.x = -player.width/2
     }
 
+
+
+
+    if (npc1.collisionCheck(player))
+    {
+        npc1.color = "red";
+        npc1.width = 130;
+    }
+
+    else 
+    {
+        npc1.color = "lightgreen";
+        npc1.width = 100;
+    }
+
+    
+    if (npc2.collisionCheck(player))
+    {
+       context.strokeRect(npc2.x - npc2.width/2, npc2.y - npc2.height/2, npc2.width, npc2.height);
+    }
+
+    if (npc3.collisionCheck(player))
+    {
+       player.x = player.prevX;
+    }
+
+    else
+    {
+       player.prevX = player.x;
+    }
+
+
+
+
     player.drawRect();
     npc1.drawCircle();
     npc2.drawCircle();
