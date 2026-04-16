@@ -45,6 +45,13 @@ function GameObject()
     this.prevX = this.x;
 
 
+    // set up physcis
+    this.force = 1;
+    this.ax = 1;
+    this.ay = 1;
+
+    
+
 
 
     //velocity
