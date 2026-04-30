@@ -1,5 +1,5 @@
 
-GameObject()
+function GameObject()
 {
     // set up player starting point
     this.x = canvas.width/2;
@@ -10,27 +10,6 @@ GameObject()
     this.height = 100;
     this.radius = 50;
 
-
-    //bounding box
-    // this.left = function()
-    // {
-    //     return this.x - this.width/2;
-    // }
-
-    // this.right = function()
-    // {
-    //     return this.x + this.width/2;
-    // }
-
-    // this.top = function()
-    // {
-    //     return this.y - this.height/2;
-    // }
-
-    // this.bottom = function()
-    // {
-    //     return this.y + this.height/2;
-    // }
 
 
     this.left = function()
@@ -86,31 +65,23 @@ GameObject()
     this.drawRect = function()
     {
         context.save();
-            context.fillStyle = "blue";
+            context.fillStyle = this.color;
             context.fillRect(this.x - this.width/2, this.y - this.height/2, this.width, this.height);
         context.restore();
     }
 
 
-//     this.draw = function()
-//     {
-//         context.save();
-//             context.beginPath();
-//             context.arc(this.x, this.y, this.radius, 0, 360*Math.PI/180, true);
-//             context.fillStyle = this.color;
-//             context.fill();
-//             context.closePath();
-//         context.restore();
-//     }
-
+    //make move
     this.move = function()
     {
         this.x += this.vx;
         this.y += this.vy;
-
-      
     }
 
+
+
+
+    
     this.collisionCheck = function(Object)
         {
             if 
@@ -124,5 +95,19 @@ GameObject()
             }
             return false;
         }
+
+        this.hitTestPoint = function(obj)
+        {
+            if(obj.x>= this.left().x &&
+            obj.x<= this.right().x &&
+            obj.y >= this.top().y &&
+            obj.y <= this.bottom().y)
+            {
+                return true;
+            }
+            return false;
+        }
     
+
+    this.jumpSpeed = -20;
 }
