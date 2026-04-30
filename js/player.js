@@ -1,4 +1,5 @@
-function GameObject()
+
+GameObject()
 {
     // set up player starting point
     this.x = canvas.width/2;
@@ -10,38 +11,50 @@ function GameObject()
     this.radius = 50;
 
 
-   // if (color==undefined)
-   // {
-   //     this.color = "blue";
-   // }
-   // else
-   // {
-   //     this.color = "red";
-   // }
+    //bounding box
+    // this.left = function()
+    // {
+    //     return this.x - this.width/2;
+    // }
+
+    // this.right = function()
+    // {
+    //     return this.x + this.width/2;
+    // }
+
+    // this.top = function()
+    // {
+    //     return this.y - this.height/2;
+    // }
+
+    // this.bottom = function()
+    // {
+    //     return this.y + this.height/2;
+    // }
 
 
-
-    
     this.left = function()
     {
-        return this.x - this.width/2;
+        return { x: this.x - this.width/2, y: this.y };
     }
 
     this.right = function()
     {
-        return this.x + this.width/2;
-    }
-
-    this.top = function()
-    {
-        return this.y - this.height/2;
+        return { x: this.x + this.width/2, y: this.y };
     }
 
     this.bottom = function()
     {
-        return this.y + this.height/2;
+        return { x: this.x, y: this.y + this.height/2 };
     }
 
+    this.top = function()
+    {
+        return { x: this.x, y: this.y - this.height/2 };
+    }
+
+
+    this.canJump = false;
     this.prevX = this.x;
 
 
@@ -49,8 +62,6 @@ function GameObject()
     this.force = 1;
     this.ax = 1;
     this.ay = 1;
-
-    
 
 
 
@@ -61,12 +72,13 @@ function GameObject()
 //cirlce
     this.drawCircle = function()
     {
+        var size = 10;
         context.save();
-            context.beginPath();
-            context.arc(this.x, this.y, this.radius, 0, 360*Math.PI/180, true);
-            context.fillStyle = this.color;
-            context.fill();
-            context.closePath();
+            context.fillRect(this.x-size/2, this.y-size/2, size, size);
+            context.fillRect(this.left/2, this.left/2, size, size);
+            context.fillRect(this.right/2, this.right/2, size, size);
+            context.fillRect(this.bottom/2, this.bottom/2, size, size);
+            context.fillRect(this.top/2, this.top/2, size, size);
         context.restore();
     }
 
@@ -112,36 +124,5 @@ function GameObject()
             }
             return false;
         }
-        // // left
-        // if (this.x - this.radius < 0)
-        // {
-        //     this.x = this.radius;
-        //     this.vx = -this.vx;
-        //     this.color = "lightgreen";
-        // }
-
-        // // right
-        // if (this.x + this.radius > canvas.width)
-        // {
-        //     this.x = canvas.width - this.radius;
-        //     this.vx = -this.vx;
-        //     this.color = "lavender";
-        // }
-
-        // // up
-        // if (this.y - this.radius < 0)
-        // {
-        //     this.y = this.radius;
-        //     this.vy = -this.vy;
-        //     this.color = "yellow";
-        // }
-
-        // // down
-        // if (this.y + this.radius > canvas.height)
-        // {
-        //     this.y = canvas.height - this.radius;
-        //     this.vy = -this.vy;
-        //     this.color = "pink";
-        // }
     
 }
